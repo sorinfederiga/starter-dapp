@@ -17,7 +17,7 @@ const routes: RouteType[] = [
   {
     path: '/',
     page: 'home',
-    title: '',
+    title: 'TwinsofT',
     component: Home,
   },
   {
