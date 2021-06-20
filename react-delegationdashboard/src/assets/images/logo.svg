@@ -8,15 +8,8 @@
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="twinsoft.svg"
-   inkscape:export-filename="C:\elrond\twinsoft_test.png"
-   inkscape:export-xdpi="101.6"
-   inkscape:export-ydpi="101.6"
-   shape-rendering="crispEdges"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
+   sodipodi:docname="logo.svg"
+   shape-rendering="crispEdges">
   <sodipodi:namedview
      id="namedview7"
      pagecolor="#ffffff"
@@ -28,7 +21,7 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="2.56"
-     inkscape:cx="91.992188"
+     inkscape:cx="92.382812"
      inkscape:cy="113.86719"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
