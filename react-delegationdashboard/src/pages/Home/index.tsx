@@ -6,12 +6,21 @@ import State from 'components/State';
 import { useContext } from 'context';
 import WalletLogin from './Login/Wallet';
 import WalletConnectLogin from './Login/WalletConnect';
+import StatCard from 'components/StatCard';
+import denominate from 'components/Denominate/formatters';
+import { decimals, denomination } from 'config';
 
 const Home = () => {
-  const { loading, error, loggedIn, egldLabel } = useContext();
-
+  const { totalActiveStake,contractOverview,aprPercentage,numberOfActiveNodes,numUsers,loading, error, loggedIn, egldLabel } = useContext();
   const ref = React.useRef(null);
-
+  const getPercentage = (amountOutOfTotal: string, total: string) => {
+    let percentage =
+      (parseInt(amountOutOfTotal.replace(/,/g, '')) / parseInt(total.replace(/,/g, ''))) * 100;
+    if (percentage < 1) {
+      return '<1';
+    }
+    return percentage ? percentage.toFixed(2) : '...';
+  };
   return (
     <div ref={ref} className="home d-flex flex-fill align-items-center">
       {error ? (
@@ -26,14 +35,28 @@ const Home = () => {
       ) : loading ? (
         <State icon={faCircleNotch} iconClass="fa-spin text-primary" />
       ) : (
+        <div className="cards d-flex flex-wrap">
+        <StatCard title="Number of Users" value={numUsers.toString()} color="orange" svg="user.svg" />
+        <StatCard title="Number of Nodes" value={numberOfActiveNodes} valueUnit="" color="purple" svg="nodes.svg"/>
+        <StatCard title="Computed APR" value={aprPercentage} valueUnit="" color="orange" svg="leaf-solid.svg" percentage="Annual percentage rate incl. service fee" tooltipText="This is an approximate APR calculation for this year based on the current epoch" />
+        <StatCard title="Service Fee" value={contractOverview.serviceFee || ''} valueUnit="%" color="red"  svg="service.svg"/>
+        <StatCard title="Delegation Cap" 
+            value={denominate({decimals, denomination, input: contractOverview.maxDelegationCap, }) || ''}
+            valueUnit={egldLabel}
+            color="green"
+            svg="delegation.svg"
+            percentage={`${getPercentage(denominate({ input: totalActiveStake, denomination, decimals, }), denominate({ decimals, denomination, input: contractOverview.maxDelegationCap, }))}% filled`}>
+        </StatCard>        
         <div className="m-auto login-container">
           <div className="card my-spacer text-center">
             <div className="card-body p-spacer mx-lg-spacer">
               <Logo className="logo mb-spacer" />
               <h4 className="mb-spacer">Elrond Delegation Manager</h4>
               <p className="lead mb-spacer">
-                Delegate Elrond ({egldLabel}) and earn up to 25% APY!
+                9.99% fee until 31.08.2021 <br/> 
+                14.99% from 01.09.2021 <br/>
               </p>
+              <h3 className="mb-spacer">* 1 node = 5 days with no rewards</h3>
               <p className="mb-spacer">Please select your login method:</p>
               <div>
                 <a
@@ -48,8 +71,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
       )}
-    </div>
+    </div>    
   );
 };
 
