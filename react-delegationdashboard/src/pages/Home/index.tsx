@@ -52,15 +52,6 @@ const Home = () => {
             <div className="card-body p-spacer mx-lg-spacer">
               <Logo className="logo mb-spacer" />
               <h4 className="mb-spacer">Elrond Delegation Manager</h4>
-              <h3 className="mb-spacer">* 1 node = 5 days with no rewards</h3>
-              <div>
-                <a
-                  href={'https://explorer.elrond.com/nodes/383277adcb1ffe3e2eeef0fd235bbe4582b9e7727cd2733433febfd633bae3b8f7d6c4ff3c04c52d950b92381aacaf1768fc2c30219e7799c4a35c3f14165d41fa6a050c3fa9c351e02a868a91e3bdbc8f6c97c4145f7848746485b7ae085e8e'}
-                  className="btn btn-primary px-sm-spacer mx-1 mx-sm-3"
-                >
-                  Check node status
-                </a>
-              </div>
               <br/>
               <div>
                 <a
